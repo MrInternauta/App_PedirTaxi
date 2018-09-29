@@ -1,0 +1,36 @@
+
+<ion-header>
+
+    <ion-navbar color="primero">
+        <ion-title>Información del viaje</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content *ngIf="viaje" padding>
+    <h3>Información extra: {{viaje.datos.info_extra}} <br>
+        Distancia (km): {{viaje.datos.km}} <br>
+        Pasajeros: {{viaje.datos.pasajeros}} <br>
+        Precio $: {{viaje.datos.precio}}</h3>
+  
+      <agm-map style="height: 70%" [latitude]="viaje.datos.O_lat" [longitude]="viaje.datos.O_lng" [zoom]="18">
+          <agm-marker [latitude]="viaje.datos.O_lat" [longitude]="viaje.datos.O_lng" iconUrl="assets/icon/icon/icono_inicio.png">
+            <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+              <ng-template>
+                Origen
+              </ng-template>
+            </agm-snazzy-info-window>
+          </agm-marker>
+  
+          <agm-marker [latitude]="viaje.datos.D_lat" [longitude]="viaje.datos.D_lng" iconUrl="assets/icon/icon/icono_llegada.png">
+            <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+              <ng-template>
+                Destino
+              </ng-template>
+            </agm-snazzy-info-window>
+          </agm-marker>
+        </agm-map>
+  
+  </ion-content>
+  

@@ -1,0 +1,74 @@
+<div>
+
+  <!--Material Design Menu-->
+  <ion-menu [content]="content" >
+    <ion-content>
+
+
+
+   <ion-list>
+     <button  *ngIf="perfil" (click)="informacion()" menuClose ion-item color="primero">
+       <ion-avatar item-start>
+         <img  [src]="perfil.Foto" onerror="this.src='http://www.coordinadora.com/wp-content/uploads/sidebar_usuario-corporativo.png'"/>
+         </ion-avatar>
+           <h2>{{perfil.Name}} {{perfil.Lastname}}</h2>
+           <h3>Telefono: {{perfil.Phone}}</h3>
+
+     </button>
+
+     <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+       {{p.title}}
+       <ion-avatar item-start>
+         <ion-icon class="menulat" name="car"></ion-icon>
+         </ion-avatar>
+     </button>
+
+     <!-- <button  menuClose ion-item>
+       Ayudanos a mejorar
+       <ion-avatar item-start>
+         <ion-icon class="menulat" name="bug"></ion-icon>
+         </ion-avatar>
+     </button> -->
+     <button menuClose ion-item (click)="viajes()">
+      Viajes
+      <ion-avatar item-start>
+        <ion-icon class="menulat" name="archive"></ion-icon>
+        </ion-avatar>
+    </button>
+
+     <button menuClose ion-item (click)="abrir()">
+       Emergencia
+       <ion-avatar item-start>
+         <ion-icon class="menulat" name="call"></ion-icon>
+         </ion-avatar>
+     </button>
+   
+
+    <!-- <button menuClose ion-item>
+       Visitanos
+       <ion-avatar item-start>
+         <ion-icon class="menulat" name="navigate"></ion-icon>
+         </ion-avatar>
+     </button> -->
+
+
+    
+     
+   </ion-list>
+
+   <ion-footer>
+     
+    <button menuClose ion-item (click)="salir()">
+      Cerrar sesión
+      <ion-avatar item-start>
+        <ion-icon class="menulat" name="log-out"></ion-icon>
+        </ion-avatar>
+    </button>
+     
+   </ion-footer>
+
+    </ion-content>
+  </ion-menu>
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+</div>

@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar color="primero">
+      <ion-buttons left>
+        <button ion-button icon-only menuToggle="left">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Atender Taxi</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+
+    <!-- No existe viaje en curso-->
+    <agm-map   *ngIf="estado == 'No existe viaje en curso'" style="height: 104%" [latitude]="mi_ubicacion.lat" [longitude]="mi_ubicacion.lng  " [zoom]="18">
+      <agm-marker [latitude]="mi_ubicacion.lat" [longitude]="mi_ubicacion.lng" iconUrl="assets/icon/icon/taxi.png">
+        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+          <ng-template>
+            Mi ubicación
+          </ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
+    </agm-map>
+    <!--/ No existe viaje en curso-->
+
+    <!--Existe viaje en curso-->
+    <agm-map  *ngIf="estado == 'Existe viaje en curso'"  style="height: 105%" [latitude]="esta_peticion.O_lat" [longitude]="esta_peticion.O_lng" [zoom]="16">
+        <agm-marker [latitude]="mi_ubicacion.lat" [longitude]="mi_ubicacion.lng" iconUrl="assets/icon/icon/taxi.png">
+          <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+            <ng-template>
+                Ubicación
+            </ng-template>
+          </agm-snazzy-info-window>
+        </agm-marker>
+        <agm-marker [latitude]="esta_peticion.O_lat" [longitude]="esta_peticion.O_lng" iconUrl="assets/icon/icon/icono_inicio.png">
+          <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+            <ng-template>
+                Origen
+            </ng-template>
+          </agm-snazzy-info-window>
+        </agm-marker>
+
+      <div *ngIf="estado == 'Existe viaje en curso'">
+        <agm-marker  [latitude]="esta_peticion.D_lat" [longitude]="esta_peticion.D_lng"  iconUrl="assets/icon/icon/icono_llegada.png">
+          <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+            <ng-template>
+            Destino
+            </ng-template>
+          </agm-snazzy-info-window>
+       </agm-marker>
+        <agm-circle    [latitude]="esta_peticion.O_lat" [longitude]="esta_peticion.O_lng"
+        [radius]="30"
+        [fillColor]="'blue'">
+        </agm-circle>
+        <agm-circle    [latitude]="esta_peticion.D_lat" [longitude]="esta_peticion.D_lng"
+        [radius]="30"
+        [fillColor]="'green'">
+        </agm-circle>
+        <agm-circle    [latitude]="mi_ubicacion.lat" [longitude]="mi_ubicacion.lng"
+        [radius]="30"
+        [fillColor]="'red'">
+        </agm-circle>
+      </div>
+    </agm-map>
+    <ion-fab *ngIf="estado == 'Existe viaje en curso'" right bottom>
+        <button ion-fab color="light"><ion-icon name="more"></ion-icon></button>
+        <ion-fab-list side="left">
+          <button ion-fab><ion-icon (click)="informacion()" name="contact" ></ion-icon></button>
+          <button ion-fab><ion-icon (click)="info_viaje()" name="information-circle"></ion-icon></button>
+          <button ion-fab><ion-icon (click)="viaje_terminado()" name="checkmark-circle"></ion-icon></button>
+        </ion-fab-list>
+      </ion-fab>
+      <!--/Existe viaje en curso-->
+  </ion-content>

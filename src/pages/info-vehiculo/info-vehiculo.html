@@ -1,0 +1,169 @@
+<ion-header>
+  <ion-navbar color="primary">
+
+    <ion-title>Editar informacion del vehículo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+        <div class="card-img-overlay rgba-info-strong" *ngIf="!mi_perfil_conductor">
+
+          <ion-grid>
+
+            <ion-row>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="seleccionar_fotos()">
+                    <ion-icon name="photos"></ion-icon>
+                    Seleccionar
+                </button>
+
+              </ion-col>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="mostrar_camara()">
+                    <ion-icon name="camera"></ion-icon>
+                    Camara
+                </button>
+
+              </ion-col>
+
+            </ion-row>
+
+          </ion-grid>
+
+          <div>
+
+
+
+            <div >
+              <ion-list>
+
+                <ion-item >
+                  <ion-label floating>Numero de Taxi</ion-label>
+                  <ion-input type="number" [(ngModel)]="user.Num_taxi"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>Placas</ion-label>
+                  <ion-input type="text" [(ngModel)]="user.Placas"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>Descripcion del vehiculo </ion-label>
+                  <ion-input type="text" [(ngModel)]="user.Descripcion"></ion-input>
+                </ion-item>
+
+                <ion-item *ngIf="imgPreview">
+                  <img [src]="imgPreview">
+                </ion-item>
+
+
+              </ion-list>
+            </div>
+
+
+
+            <button ion-button full icon-left color="Preferido" (click)="taxi_info(user)"><ion-icon name="car"></ion-icon> Guardar</button>
+
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="card-img-overlay rgba-info-strong" *ngIf="mi_perfil_conductor">
+
+          <ion-grid>
+
+            <ion-row>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="seleccionar_fotos()">
+                    <ion-icon name="photos"></ion-icon>
+                    Seleccionar
+                </button>
+
+              </ion-col>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="mostrar_camara()">
+                    <ion-icon name="camera"></ion-icon>
+                    Camara
+                </button>
+
+              </ion-col>
+
+            </ion-row>
+
+          </ion-grid>
+
+          <div>
+
+
+
+            <div >
+              <ion-list>
+
+                <ion-item >
+                  <ion-label floating>Numero de Taxi</ion-label>
+                  <ion-input type="number" [(ngModel)]="user.Num_taxi" [value]="mi_perfil_conductor.Num_taxi"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>Placas</ion-label>
+                  <ion-input type="text" [(ngModel)]="user.Placas" [value]="mi_perfil_conductor.Placas"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label floating>Descripcion del vehiculo </ion-label>
+                  <ion-input type="text" [(ngModel)]="user.Descripcion" [value]="mi_perfil_conductor.Descripcion"></ion-input>
+                </ion-item>
+
+                <ion-item >
+                  <img [src]="mi_perfil_conductor.Foto">
+                </ion-item>
+
+
+              </ion-list>
+            </div>
+
+
+
+            <button ion-button full icon-left color="Preferido" (click)="taxi_info(user)"><ion-icon name="car"></ion-icon> Guardar</button>
+
+
+
+
+
+          </div>
+        </div>
+
+</ion-content>

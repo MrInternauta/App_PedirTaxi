@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-navbar color="primero">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle="left">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Pedir Taxi</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!--No hay peticion-->
+  <ion-fab left color="primero" (click)="peticion()" *ngIf="estado == 'No hay peticion'" bottom  >
+    <button ion-fab color="light"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
+  </ion-fab>
+  <agm-map   *ngIf="estado == 'No hay peticion'" style="height: 104%" [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng  " [zoom]="18"    (mapClick)="clickMap($event)">
+      <agm-marker [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng" iconUrl="assets/icon/icon/icono_inicio.png">
+        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+          <ng-template>
+              Origen
+          </ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
+      <agm-marker  [latitude]="mi_ubicacion.D_lat" [longitude]="mi_ubicacion.D_lng"  iconUrl="assets/icon/icon/icono_llegada.png">
+          <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+            <ng-template>
+            Destino
+            </ng-template>
+          </agm-snazzy-info-window>
+      </agm-marker>
+  </agm-map>
+  <!--/No hay peticion-->
+  <!--Hay peticion pero no hay respuesta-->
+  <ion-fab left color="primero" (click)="Cancelar_peticion()" *ngIf="estado == 'Hay peticion pero no hay respuesta'" bottom  >
+    <button ion-fab color="light"><ion-icon name="close-circle"></ion-icon></button>
+  </ion-fab>
+  <agm-map  *ngIf="estado == 'Hay peticion pero no hay respuesta'"  style="height: 100%" [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng  " [zoom]="13">
+    <agm-marker [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng" iconUrl="assets/icon/icon/icono_inicio.png">
+      <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+        <ng-template>
+            Origen
+        </ng-template>
+      </agm-snazzy-info-window>
+    </agm-marker>
+      <agm-marker  [latitude]="mi_ubicacion.D_lat" [longitude]="mi_ubicacion.D_lng"  iconUrl="assets/icon/icon/icono_llegada.png">
+        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+          <ng-template>
+          Destino
+          </ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
+      <agm-circle   *ngIf="snapshot"  [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng"
+        [radius]="30"
+        [fillColor]="'blue'">
+      </agm-circle>
+      <agm-circle   *ngIf="snapshot"  [latitude]="mi_ubicacion.D_lat" [longitude]="mi_ubicacion.D_lng"
+        [radius]="30"
+        [fillColor]="'green'">
+      </agm-circle>
+    </agm-map>
+    <!--/Hay peticion pero no hay respuesta-->
+    <!--/Hay respuesta-->
+    <agm-map *ngIf="estado == 'Hay respuesta'"  style="height: 105%" [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng  " [zoom]="16">
+
+      <agm-marker  [latitude]="Conductor.lat" [longitude]="Conductor.lng"  iconUrl="assets/icon/icon/taxi.png">
+        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+          <ng-template>
+          Conductor
+          </ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
+
+
+      <agm-marker [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng" iconUrl="assets/icon/icon/icono_inicio.png">
+        <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+          <ng-template>
+              Origen
+          </ng-template>
+        </agm-snazzy-info-window>
+      </agm-marker>
+
+        <agm-marker  [latitude]="mi_ubicacion.D_lat" [longitude]="mi_ubicacion.D_lng"  iconUrl="assets/icon/icon/icono_llegada.png">
+          <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+            <ng-template>
+            Destino
+            </ng-template>
+          </agm-snazzy-info-window>
+
+        </agm-marker>
+
+        <agm-circle   *ngIf="estado == 'Hay respuesta'"  [latitude]="mi_ubicacion.O_lat" [longitude]="mi_ubicacion.O_lng"
+      [radius]="30"
+      [fillColor]="'blue'">
+        </agm-circle>
+
+    <agm-circle   *ngIf="estado == 'Hay respuesta'"  [latitude]="mi_ubicacion.D_lat" [longitude]="mi_ubicacion.D_lng"
+    [radius]="30"
+    [fillColor]="'green'">
+    </agm-circle>
+
+    <agm-circle   *ngIf="estado == 'Hay respuesta'" [latitude]="Conductor.lat" [longitude]="Conductor.lng"
+    [radius]="30"
+    [fillColor]="'red'">
+    </agm-circle>
+    </agm-map>
+
+    <ion-fab *ngIf="estado == 'Hay respuesta'" right bottom>
+      <button ion-fab color="light"><ion-icon name="more"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab><ion-icon (click)="informacion()" name="contact" ></ion-icon></button>
+        <button ion-fab><ion-icon  (click)="info_viaje()" name="information-circle"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+
+    <!-- /PASAJERO-->
+
+  </ion-content>

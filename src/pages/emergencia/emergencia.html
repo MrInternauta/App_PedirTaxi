@@ -1,0 +1,53 @@
+
+<ion-header>
+    <ion-navbar color="primero">
+        <ion-buttons left >
+          <button ion-button icon-only menuToggle="left">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title >Emergencia</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding >
+  <ion-card style="background-color:#f53d3d">
+      <br>
+      <ion-icon class="botonCentra" style="font-size:57px; color:#f5d93c" name="warning"> 
+      </ion-icon>
+      <br>
+      <ion-grid>
+        <ion-row >
+          <ion-col col-auto>
+          <h2  style="color:#fff">El número por defecto es: </h2><br>
+          <h1 style="color:#fff">{{numero}} <button (click)="configNum()" ion-button round outline icon-only small color="light">
+              <ion-icon name="build" ></ion-icon>
+            </button> 
+          </h1> 
+          
+            </ion-col>
+         <ion-col col-auto>
+           
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+      <br>
+            <ion-list>
+                <ion-item-sliding >
+                  <ion-item style="background-color:#f53d3d">
+                   <ion-avatar item-start>
+                      <ion-icon style="font-size:46px; color:#f5d93c" name="arrow-back"></ion-icon>
+                    </ion-avatar>
+                    <h2 class="parra">Desliza para mostrar el botón</h2>
+                  </ion-item>
+                  <ion-item-options side="right">
+                    <button ion-button color="llamada" (click)="llamar()">
+                      <ion-icon name="call"></ion-icon>
+                      Llamar
+                    </button>
+                  </ion-item-options>
+                </ion-item-sliding>
+              </ion-list>
+              <br><br><br>
+  </ion-card>
+
+</ion-content>

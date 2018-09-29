@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Configuración</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+  <button ion-item (click)="Mover(1)">
+    <ion-avatar item-start>
+      <ion-icon name="contact"></ion-icon>
+    </ion-avatar>
+    <h2>Editar perfil</h2>
+    <p>Modifica información del perfil</p>
+  </button>
+
+  <button *ngIf="usuario == 'conductores'" ion-item (click)="Mover(2)">
+    <ion-avatar item-start>
+      <ion-icon name="car"></ion-icon>
+    </ion-avatar>
+    <h2>Editar vehiculo</h2>
+    <p>Modifica información del vehiculo</p>
+  </button>
+
+  <button ion-item (click)="Funciones.signOut()">
+    <ion-avatar item-start>
+      <ion-icon name="power"></ion-icon>
+    </ion-avatar>
+    <h2>Cerrar sesión</h2>
+    <p>Salir de la aplicación</p>
+  </button>
+</ion-list>
+</ion-content>

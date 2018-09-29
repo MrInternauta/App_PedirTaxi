@@ -1,0 +1,32 @@
+.botonCentra{
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    text-align:center
+  }
+
+.centrado{
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center
+}
+.entradaArriba{
+    border-radius: 15px 15px 0px 0px;
+    }
+.entradaAbajo{
+    border-radius: 0px 0px 15px 15px;
+}
+
+.fondo{
+
+    background-color: #ff5f57
+}
+
+.menulat{
+    font-size:32px;
+    color:#ff5f57;
+    // color: gray;
+}
+.highlight {
+    background-color: #f4f4f4;
+  }

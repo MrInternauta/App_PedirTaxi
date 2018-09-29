@@ -1,0 +1,30 @@
+
+<ion-header>
+
+  <ion-navbar color="dinero">
+    <ion-title>Cupón</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+ <ion-grid>
+   <ion-row>
+     <ion-col>
+       <br>
+      <button ion-button  color="dinero" class="botonCentra" (click)="genCup()">Generar cupón</button>
+     </ion-col>
+     <ion-col>
+        <ion-card >
+            <ion-card-content >
+             {{cup}}
+            </ion-card-content>
+          </ion-card>
+     </ion-col>
+   </ion-row>
+ </ion-grid>
+
+  <button ion-button block clear>Usar cupón</button>
+</ion-content>

@@ -1,0 +1,87 @@
+<ion-content padding class="fondo">
+  <h2 style="margin-left: auto;
+            margin-right: auto;
+            text-align:center;
+            color:white">Selecciona tu cuidad</h2>
+  <ion-list>
+   <ion-item style=" border-radius: 15px 15px 15px 15px">
+      <ion-label>Estado</ion-label>
+        <ion-select [(ngModel)]="estados">
+            <ion-option value="Aguascalientes">Aguascalientes</ion-option>
+
+            <ion-option value="Baja California">Baja California</ion-option>
+
+            <ion-option value="Baja California Sur">Baja California Sur</ion-option>
+
+            <ion-option value="Campeche">Campeche</ion-option>
+
+            <ion-option value="Coahuila de Zaragoza">Coahuila de Zaragoza</ion-option>
+
+            <ion-option value="Colima">Colima</ion-option>
+
+            <ion-option value="Chiapas">Chiapas</ion-option>
+
+            <ion-option value="Chihuahua">Chihuahua</ion-option>
+
+            <ion-option value="Distrito Federal">Distrito Federal</ion-option>
+
+            <ion-option value="Durango">Durango</ion-option>
+
+            <ion-option value="Guanajuato">Guanajuato</ion-option>
+
+            <ion-option value="Guerrero">Guerrero</ion-option>
+
+            <ion-option value="Hidalgo">Hidalgo</ion-option>
+
+            <ion-option value="Jalisco">Jalisco</ion-option>
+
+            <ion-option value="México">México</ion-option>
+
+            <ion-option value="Michoacán de Ocampo">Michoacán de Ocampo</ion-option>
+
+            <ion-option value="Morelos">Morelos</ion-option>
+
+            <ion-option value="Nayarit">Nayarit</ion-option>
+
+            <ion-option value="Nuevo León">Nuevo León</ion-option>
+
+            <ion-option value="Oaxaca">Oaxaca</ion-option>
+
+            <ion-option value="Puebla">Puebla</ion-option>
+
+            <ion-option value="Querétaro">Querétaro</ion-option>
+
+            <ion-option value="Quintana Roo">Quintana Roo</ion-option>
+
+            <ion-option value="San Luis Potosí">San Luis Potosí</ion-option>
+
+            <ion-option value="Sinaloa">Sinaloa</ion-option>
+
+            <ion-option value="Sonora">Sonora</ion-option>
+
+            <ion-option value="Tabasco">Tabasco</ion-option>
+
+            <ion-option value="Tamaulipas">Tamaulipas</ion-option>
+
+            <ion-option value="Tlaxcala">Tlaxcala</ion-option>
+
+            <ion-option value="Veracruz de Ignacio de la Llave">Veracruz de Ignacio de la Llave</ion-option>
+
+            <ion-option value="Yucatán">Yucatán</ion-option>
+
+            <ion-option value="Zacatecas">Zacatecas</ion-option>
+
+        </ion-select>
+    </ion-item>
+
+ <ion-item *ngIf="estados == 'Veracruz de Ignacio de la Llave'" style="border-radius: 15px 15px 15px 15px">
+    <ion-label>Municipios de Veracruz</ion-label>
+    <ion-select [(ngModel)]="municipios">
+          <ion-option value="Coatzacoalcos">Coatzacoalcos</ion-option>
+    </ion-select>
+ </ion-item>
+</ion-list>
+
+<button ion-button round (click)="Guardar(estados, municipios)" class="botonCentra">Guardar</button>
+
+</ion-content>

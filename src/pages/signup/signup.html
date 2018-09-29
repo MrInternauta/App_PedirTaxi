@@ -1,0 +1,59 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Registrarse</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+
+
+        <!-- <div class="card-img-overlay rgba-info-strong">
+            <h3 class="card-title text-center mt-5 mb-5 text-uppercase font-weight-bold"> Pedir <span class="text-primary">Taxis</span></h3>
+          <div> -->
+            <ion-list>
+
+
+              <ion-item>
+                <ion-label floating>Correo</ion-label>
+                <ion-input type="email" [(ngModel)]="Email"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label floating>Contraseña</ion-label>
+                <ion-input type="password" [(ngModel)]="Password"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label floating>Repite la Contraseña</ion-label>
+                <ion-input type="password" [(ngModel)]="Password2"></ion-input>
+              </ion-item>
+            </ion-list>
+
+            <ion-list>
+              <ion-item>
+                <ion-label>Tipo de usuario</ion-label>
+                <ion-select [(ngModel)]="usuario">
+                  <ion-option value="conductores">Conductor</ion-option>
+                  <ion-option value="pasajeros">Pasajero</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+
+           
+            <button ion-button full icon-left color="Preferido" (click)="register(Email, Password, Password2, usuario)"> Listo</button>
+
+            <div class="alert alert-primary" role="alert">
+            ¿Ya tienes una cuenta?
+            <button ion-button clear (click)="inicio()" class="botonCentra">Iniciar Sesión</button>
+          </div>
+
+
+
+          <!-- </div>
+        </div> -->
+
+</ion-content>

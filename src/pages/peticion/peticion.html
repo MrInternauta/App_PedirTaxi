@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primero">
+    <ion-title>Pedir Taxi</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="tutorial-page">
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+
+
+    <ion-slide>
+
+      <h2 class="slide-title">¿Cuantos pasajeros son?</h2>
+      <ion-list>
+          <ion-item>
+            <ion-label>Numero de pasajeros</ion-label>
+            <ion-select [(ngModel)]="mi_ubicacion.pasajeros">
+              <ion-option value="1">1</ion-option>
+              <ion-option value="2">2</ion-option>
+              <ion-option value="3">3</ion-option>
+              <ion-option value="4">4</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+    </ion-slide>
+
+    <ion-slide>
+      <h2 class="slide-title">Comentarios para el conductor</h2>
+      <ion-list>
+        <ion-item>
+         <ion-input type="text" placeholder="Comentarios"  [(ngModel)]="mi_ubicacion.info_extra" ></ion-input>
+         </ion-item>
+
+        </ion-list>
+    </ion-slide>
+
+
+    <ion-slide>
+
+      <h2 class="slide-title">¿Listo para viajar?</h2>
+      <p>Distancia: {{mi_ubicacion.km}} km</p>
+      <p>Precio: ${{mi_ubicacion.precio}}</p>
+      <button ion-button large  icon-end color="primero" (click)="continuar(mi_ubicacion)">
+        Continuar
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+
+      <button ion-button large icon-end clear (click)="cancelar()">
+        Cancelar
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+<!--
+      <ion-list>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-avatar>
+    <h2>Cher</h2>
+    <p>Ugh. As if.</p>
+  </ion-item>
+</ion-list>-->
+
+
+    </ion-slide>
+
+
+  </ion-slides>
+</ion-content>

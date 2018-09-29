@@ -1,0 +1,169 @@
+<ion-header>
+  <ion-navbar color="primary">
+
+    <ion-title>Editar información personal</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+        <div class="card-img-overlay rgba-info-strong" align="center" *ngIf="!mi_perfil_conductor">
+
+          <ion-grid>
+
+            <ion-row>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="seleccionar_fotos()">
+                    <ion-icon name="photos"></ion-icon>
+                    Seleccionar
+                </button>
+
+              </ion-col>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="mostrar_camara()">
+                    <ion-icon name="camera"></ion-icon>
+                    Camara
+                </button>
+
+              </ion-col>
+
+            </ion-row>
+
+          </ion-grid>
+
+
+          <div>
+            <ion-list >
+
+              <div>
+                  <ion-item>
+                    <ion-label floating>Nombres</ion-label>
+                    <ion-input type="text" [(ngModel)]="Name" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label floating>Apellidos</ion-label>
+                    <ion-input type="text" [(ngModel)]="Lastname"  ></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label floating>Numero de telefono</ion-label>
+                    <ion-input type="number" [(ngModel)]="Telefono"  ></ion-input>
+                  </ion-item>
+
+
+
+
+
+                    <ion-item *ngIf="imgPreview">
+                      <img [src]="imgPreview">
+                    </ion-item>
+
+
+
+              </div>
+              <button ion-button full icon-left (click)="personal_info(Name,Lastname,Telefono)">Guardar</button>
+
+            </ion-list>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="card-img-overlay rgba-info-strong" align="center" *ngIf="mi_perfil_conductor">
+
+          <ion-grid>
+
+            <ion-row>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="seleccionar_fotos()">
+                    <ion-icon name="photos"></ion-icon>
+                    Seleccionar
+                </button>
+
+              </ion-col>
+
+              <ion-col>
+
+                <button ion-button
+                        block
+                        icon-left
+                        (click)="mostrar_camara()">
+                    <ion-icon name="camera"></ion-icon>
+                    Camara
+                </button>
+
+              </ion-col>
+
+            </ion-row>
+
+          </ion-grid>
+
+
+          <div>
+            <ion-list >
+
+              <div>
+                  <ion-item>
+                    <ion-label floating>Nombres</ion-label>
+                    <ion-input type="text" [(ngModel)]="Name" [value]="mi_perfil_conductor.Name"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label floating>Apellidos</ion-label>
+                    <ion-input type="text" [(ngModel)]="Lastname"  [value]="mi_perfil_conductor.Lastname"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label floating>Numero de telefono</ion-label>
+                    <ion-input type="text" [(ngModel)]="Telefono"  [value]="mi_perfil_conductor.Phone" ></ion-input>
+                  </ion-item>
+
+
+
+
+
+                    <ion-item >
+                      <img [src]="mi_perfil_conductor.Foto">
+                    </ion-item>
+
+
+
+              </div>
+              <button ion-button full icon-left (click)="personal_info(Name,Lastname,Telefono)"><ion-icon name="contact"></ion-icon> Guardar</button>
+
+            </ion-list>
+
+          </div>
+        </div>
+</ion-content>

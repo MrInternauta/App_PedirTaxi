@@ -1,0 +1,230 @@
+
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle="left">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div *ngIf="mi_perfil_conductor">
+    <ion-card>
+      <ion-fab center top>
+        <button ion-fab color="light" >
+          <img class="perfil" [src]="mi_perfil_conductor[0].Foto"/>
+        </button>
+        <ion-fab-list side="right">
+          <button ion-fab color="dark"  *ngIf="tipo == 'soy_conductor'" (click)="mover(1)"><ion-icon name="build"></ion-icon></button>
+          <button ion-fab color="dark" *ngIf="tipo == 'soy_pasajero'" (click)="llamar() " ><ion-icon name="call"></ion-icon></button>
+          <button ion-fab color="dark" *ngIf="tipo == 'soy_pasajero'"><ion-icon name="chatbubbles"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+    <ion-card-content class="miopia">
+        <br><br><br><br><br>
+    </ion-card-content>
+      <ion-card-content>
+        <ion-card-title>
+          {{mi_perfil_conductor[0].Name}} {{mi_perfil_conductor[0].Lastname}}
+          </ion-card-title>
+          <span class = "d-block orange-text" >
+            <div *ngIf="!mi_perfil_conductor[0].calificacion">
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <p>No existe calificación</p>
+            </div>
+            <div *ngIf="mi_perfil_conductor[0].calificacion <1">
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 1%"></div>
+              </div>
+            </div>
+            <div *ngIf="mi_perfil_conductor[0].calificacion == 1">
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+              </div>
+            </div>
+            <div *ngIf="mi_perfil_conductor[0].calificacion == 2">
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+              </div>
+            </div>
+            <div *ngIf="mi_perfil_conductor[0].calificacion == 3">
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0"  aria-valuemax="100" style="width: 60%"></div>
+              </div>
+            </div>
+            <div *ngIf="mi_perfil_conductor[0].calificacion == 4">
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star-o"> </i>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+              </div>
+            </div>
+            <div *ngIf="mi_perfil_conductor[0].calificacion == 5">
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <i class = "fa fa-star"> </i>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+              </div>
+            </div>
+         </span>
+        <p>Telefono: {{mi_perfil_conductor[0].Phone}}</p>
+        <!-- <button ion-button full icon-left color="Preferido3" (click)="mover(1)"><ion-icon name="contact"></ion-icon>Editar perfil</button> -->
+      </ion-card-content>
+    </ion-card>
+    <div>
+      <ion-card>
+          <img [src]="mi_perfil_conductor[2].Foto"/>
+        <ion-card-content>
+
+            <h2>  {{mi_perfil_conductor[2].Descripcion}} </h2>
+            <p>Placas: {{mi_perfil_conductor[2].Placas}}</p>
+            <p>Número de taxi: {{mi_perfil_conductor[2].Num_taxi}}</p>
+            <button ion-button full icon-left color="Preferido3" *ngIf="tipo == 'soy_conductor'" (click)="mover(2)"><ion-icon name="car"></ion-icon>Editar vehiculo</button>
+        </ion-card-content>
+      </ion-card>
+  </div>
+</div>
+
+<div *ngIf="mi_perfil_pasajero">
+  <ion-card >
+    <ion-fab center top >
+        <button ion-fab color="light"  >
+        <img class="perfil" [src]="mi_perfil_pasajero[0].Foto"/>
+        </button>
+        <ion-fab-list side="right">
+           <button ion-fab color="dark" *ngIf="tipo == 'soy_pasajero'" (click)="mover(3)"><ion-icon name="build"></ion-icon></button>
+           <button ion-fab color="dark" *ngIf="tipo == 'soy_conductor'" (click)="llamar() "><ion-icon name="call"></ion-icon></button>
+           <button ion-fab color="dark" *ngIf="tipo == 'soy_conductor'"><ion-icon name="chatbubbles"></ion-icon></button>
+
+         </ion-fab-list>
+       </ion-fab>
+    <ion-card-content  class="miopia">
+        <br><br><br><br><br>
+    </ion-card-content>
+      
+    <ion-card-content >
+      <ion-card-title style="text-align:center">
+        {{mi_perfil_pasajero[0].Name}} {{mi_perfil_pasajero[0].Lastname}}
+        </ion-card-title>
+
+        <span class = "d-block orange-text" >
+          <div *ngIf="!mi_perfil_pasajero[0].calificacion">
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <p>No existe calificación</p>
+          </div>
+          <div *ngIf="mi_perfil_pasajero[0].calificacion <1">
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 1%"></div>
+            </div>
+          </div>
+          <div *ngIf="mi_perfil_pasajero[0].calificacion == 1">
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+            </div>
+          </div>
+          <div *ngIf="mi_perfil_pasajero[0].calificacion == 2">
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+            </div>
+          </div>
+          <div *ngIf="mi_perfil_pasajero[0].calificacion == 3">
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0"  aria-valuemax="100" style="width: 60%"></div>
+            </div>
+          </div>
+          <div *ngIf="mi_perfil_pasajero[0].calificacion == 4">
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star-o"> </i>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+            </div>
+          </div>
+          <div *ngIf="mi_perfil_pasajero[0].calificacion == 5">
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <i class = "fa fa-star"> </i>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+            </div>
+          </div>
+
+       </span>
+       <p>telefono: {{mi_perfil_pasajero[0].Phone}}</p>
+       </ion-card-content>
+  </ion-card>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</ion-content>

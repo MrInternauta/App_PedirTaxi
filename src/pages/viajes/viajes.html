@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+<ion-header>
+    <ion-navbar color="primero">
+      <ion-buttons left>
+        <button ion-button icon-only menuToggle="left">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Viajes</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+  
+            <div *ngIf="viajes[1]">
+                <ion-list *ngFor="let viaje of viajes">
+                    <button  (click)="ver(viaje)"  ion-item>
+                      <ion-avatar item-start>
+                          <ion-icon name="document"></ion-icon>
+                      </ion-avatar>
+                      Ver información
+                    </button>
+                  </ion-list>
+            </div>
+            <div *ngIf="!viajes[1]">
+              <h2>No existen viajes.</h2>
+            </div>
+  
+  
+  
+  </ion-content>

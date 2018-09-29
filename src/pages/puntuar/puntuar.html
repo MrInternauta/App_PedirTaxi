@@ -1,0 +1,107 @@
+<ion-header>
+    <ion-navbar color="primary">
+  
+      <ion-title>Calificar viaje</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+          <ion-label>Calificar</ion-label>
+          <ion-select [(ngModel)]="calificacion">
+            <ion-option value="1">1</ion-option>
+            <ion-option value="2">2</ion-option>
+            <ion-option value="3">3</ion-option>
+            <ion-option value="4">4</ion-option>
+            <ion-option value="5">5</ion-option>
+          </ion-select>
+        </ion-item>
+           
+      </ion-list>
+      <span class = "d-block orange-text" >
+          <div *ngIf="!calificacion">
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+
+
+
+
+
+            <p>No existe calificación</p>
+          </div>
+          <div *ngIf="calificacion <1">
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+
+          </div>
+          <div *ngIf="calificacion == 1">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+
+
+          </div>
+          <div *ngIf="calificacion == 2">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+
+          </div>
+          <div *ngIf="calificacion == 3">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+
+          </div>
+          <div *ngIf="calificacion == 4">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+
+
+          </div>
+          <div *ngIf="calificacion == 5">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+
+
+
+
+          </div>
+
+       </span>
+       <ion-list>
+
+        <ion-item>
+          <ion-label>Comentarios</ion-label>
+          <ion-input [(ngModel)]="comentario" type="text"></ion-input>
+        </ion-item>
+    
+      
+      </ion-list>
+
+       <button ion-button (click)="puntuar(calificacion, comentario)" round class="botonCentra" color="light" style="color:#ff5f57">Calificar</button>
+
+
+
+</ion-content>
