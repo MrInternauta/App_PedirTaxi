@@ -18,6 +18,8 @@ npm install
 
 ## Créditos
 - [@MrInternauta](https://twitter.com/mrinternauta)
+Agradecimiento por contribuir
+- [@eduard01aguirre](https://github.com/eduard01aguirre)
 
 ## Licencia
 [MIT](https://opensource.org/licenses/MIT)
